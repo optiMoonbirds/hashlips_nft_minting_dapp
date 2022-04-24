@@ -66,9 +66,9 @@ export const ResponsiveWrapper = styled.div`
 `;
 
 export const StyledLogo = styled.img`
-  width: 200px;
+  width: 300px;
   @media (min-width: 767px) {
-    width: 300px;
+    width: 500px;
   }
   transition: width 0.5s;
   transition: height 0.5s;
@@ -76,7 +76,7 @@ export const StyledLogo = styled.img`
 
 export const StyledImg = styled.img`
   box-shadow: 0px 5px 11px 2px rgba(0, 0, 0, 0.7);
-  border: 4px dashed var(--secondary);
+  border: 0px dashed var(--secondary);
   background-color: var(--accent);
   border-radius: 100%;
   width: 200px;
@@ -85,6 +85,17 @@ export const StyledImg = styled.img`
   }
   @media (min-width: 1000px) {
     width: 300px;
+  }
+  transition: width 0.5s;
+`;
+
+export const StyledLargeImg = styled.img`
+  width: 200px;
+  @media (min-width: 900px) {
+    width: 350px;
+  }
+  @media (min-width: 1000px) {
+    width: 500px;
   }
   transition: width 0.5s;
 `;
@@ -99,7 +110,7 @@ function App() {
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
   const [claimingNft, setClaimingNft] = useState(false);
-  const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
+  const [feedback, setFeedback] = useState(`Click buy to mint your own optiMoonbird.`);
   const [mintAmount, setMintAmount] = useState(1);
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
@@ -145,7 +156,7 @@ function App() {
       .then((receipt) => {
         console.log(receipt);
         setFeedback(
-          `WOW, the ${CONFIG.NFT_NAME} is yours! go visit Opensea.io to view it.`
+          `WOW, the ${CONFIG.NFT_NAME} is yours! go visit Quixotic.io to view it.`
         );
         setClaimingNft(false);
         dispatch(fetchData(blockchain.account));
@@ -205,7 +216,7 @@ function App() {
         <s.SpacerSmall />
         <ResponsiveWrapper flex={1} style={{ padding: 24 }} test>
           <s.Container flex={1} jc={"center"} ai={"center"}>
-            <StyledImg alt={"example"} src={"/config/images/example.gif"} />
+            <StyledImg alt={"example"} src={"/config/images/example-moonbirds2.gif"} />
           </s.Container>
           <s.SpacerLarge />
           <s.Container
@@ -215,8 +226,8 @@ function App() {
             style={{
               backgroundColor: "var(--accent)",
               padding: 24,
-              borderRadius: 24,
-              border: "4px dashed var(--secondary)",
+              borderRadius: 10,
+              border: "0px dashed var(--secondary)",
               boxShadow: "0px 5px 11px 2px rgba(0,0,0,0.7)",
             }}
           >
@@ -263,14 +274,14 @@ function App() {
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
-                  1 {CONFIG.SYMBOL} costs {CONFIG.DISPLAY_COST}{" "}
+                  1 optiMoonbird costs {CONFIG.DISPLAY_COST}{" "}
                   {CONFIG.NETWORK.SYMBOL}.
                 </s.TextTitle>
                 <s.SpacerXSmall />
                 <s.TextDescription
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
-                  Excluding gas fees.
+                  
                 </s.TextDescription>
                 <s.SpacerSmall />
                 {blockchain.account === "" ||
@@ -373,10 +384,49 @@ function App() {
           <s.Container flex={1} jc={"center"} ai={"center"}>
             <StyledImg
               alt={"example"}
-              src={"/config/images/example.gif"}
+              src={"/config/images/example-moonbirds1.gif"}
               style={{ transform: "scaleX(-1)" }}
             />
           </s.Container>
+        </ResponsiveWrapper>
+          <s.SpacerLarge />
+          <s.SpacerLarge />
+        <ResponsiveWrapper flex={1} style={{ padding: 24 }} test>
+          <s.SpacerLarge />
+          <s.Container flex={1} jc={"center"} ai={"center"}>
+            <StyledLargeImg alt={"example"} src={"/config/images/birds.png"} />
+          </s.Container>
+          <s.SpacerLarge />
+          <s.Container
+            flex={2}
+            jc={"center"}
+            ai={"center"}
+            style={{
+              padding: 24,
+            }}
+          >
+          <s.TextDescription
+            style={{
+              color: "#D7F0D3",
+              fontFamily: "gazpacho,serif",
+              fontSize : "56px",
+              lineHeight: "56px",
+            }}
+          >
+            Missed out on the Moonbird mint on Ethereum?
+          </s.TextDescription>
+          <s.TextDescription
+            style={{
+              color: "var(--primary-text)",
+              fontSize : "18px",
+              lineHeight: "28px",
+              fontWeight: "500",
+            }}
+          >
+            Here's your opportunity to get your own Moonbird on Optimism. They're a collection of 10,000 PFPs that feature a richly diverse and unique pool of rarity-powered traits. Mint your Moonbird on Optimism now.
+          </s.TextDescription>
+          </s.Container>
+          <s.SpacerLarge />
         </ResponsiveWrapper>
         <s.SpacerMedium />
         <s.Container jc={"center"} ai={"center"} style={{ width: "70%" }}>
@@ -387,20 +437,17 @@ function App() {
             }}
           >
             Please make sure you are connected to the right network (
-            {CONFIG.NETWORK.NAME} Mainnet) and the correct address. Please note:
-            Once you make the purchase, you cannot undo this action.
+            {CONFIG.NETWORK.NAME} Mainnet) and the correct address. 
           </s.TextDescription>
-          <s.SpacerSmall />
           <s.TextDescription
             style={{
               textAlign: "center",
               color: "var(--primary-text)",
             }}
           >
-            We have set the gas limit to {CONFIG.GAS_LIMIT} for the contract to
-            successfully mint your NFT. We recommend that you don't lower the
-            gas limit.
+           optiMoonbirds are not affiliated with PROOF, and do not carry the same utility as Moonbirds on Ethereum. 
           </s.TextDescription>
+          <s.SpacerSmall />
         </s.Container>
       </s.Container>
     </s.Screen>
