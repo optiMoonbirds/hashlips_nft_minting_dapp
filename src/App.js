@@ -215,6 +215,44 @@ function App() {
         <StyledLogo alt={"logo"} src={"/config/images/logo.png"} />
         <s.SpacerSmall />
         <ResponsiveWrapper flex={1} style={{ padding: 24 }} test>
+          <s.SpacerLarge />
+          <s.Container flex={1} jc={"center"} ai={"center"}>
+            <StyledLargeImg alt={"example"} src={"/config/images/birds.png"} />
+          </s.Container>
+          <s.SpacerLarge />
+          <s.Container
+            flex={2}
+            jc={"center"}
+            ai={"center"}
+            style={{
+              padding: 24,
+            }}
+          >
+          <s.TextDescription
+            style={{
+              color: "#D7F0D3",
+              fontFamily: "gazpacho,serif",
+              fontSize : "56px",
+              lineHeight: "56px",
+            }}
+          >
+            Missed out on the Moonbird mint on Ethereum?
+          </s.TextDescription>
+          <s.TextDescription
+            style={{
+              color: "var(--primary-text)",
+              fontSize : "18px",
+              lineHeight: "28px",
+              fontWeight: "500",
+            }}
+          >
+            Here's your opportunity to get your own Moonbird on Optimism. They're a collection of 10,000 PFPs that feature a richly diverse and unique pool of rarity-powered traits. Mint your Moonbird on Optimism now.
+          </s.TextDescription>
+          </s.Container>
+        </ResponsiveWrapper>
+        <s.SpacerMedium />
+          <s.SpacerLarge />
+        <ResponsiveWrapper flex={1} style={{ padding: 24 }} test>
           <s.Container flex={1} jc={"center"} ai={"center"}>
             <StyledImg alt={"example"} src={"/config/images/example-moonbirds2.gif"} />
           </s.Container>
@@ -239,18 +277,8 @@ function App() {
                 color: "var(--accent-text)",
               }}
             >
-              {data.totalSupply} / {CONFIG.MAX_SUPPLY}
+              {data.totalSupply === 0 ? "?" : data.totalSupply} / {CONFIG.MAX_SUPPLY}
             </s.TextTitle>
-            <s.TextDescription
-              style={{
-                textAlign: "center",
-                color: "var(--primary-text)",
-              }}
-            >
-              <StyledLink target={"_blank"} href={CONFIG.SCAN_LINK}>
-                {truncate(CONFIG.CONTRACT_ADDRESS, 15)}
-              </StyledLink>
-            </s.TextDescription>
             <s.SpacerSmall />
             {Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
               <>
@@ -275,7 +303,7 @@ function App() {
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
                   1 optiMoonbird costs {CONFIG.DISPLAY_COST}{" "}
-                  {CONFIG.NETWORK.SYMBOL}.
+                  {CONFIG.NETWORK.SYMBOL}
                 </s.TextTitle>
                 <s.SpacerXSmall />
                 <s.TextDescription
@@ -379,6 +407,17 @@ function App() {
               </>
             )}
             <s.SpacerMedium />
+            <s.TextDescription
+              style={{
+                textAlign: "center",
+                color: "var(--primary-text)",
+              }}
+            >
+              <StyledLink target={"_blank"} href={CONFIG.SCAN_LINK}>
+                Contract: {truncate(CONFIG.CONTRACT_ADDRESS, 15)}
+              </StyledLink>
+            </s.TextDescription>
+            <s.SpacerMedium />
           </s.Container>
           <s.SpacerLarge />
           <s.Container flex={1} jc={"center"} ai={"center"}>
@@ -391,44 +430,6 @@ function App() {
         </ResponsiveWrapper>
           <s.SpacerLarge />
           <s.SpacerLarge />
-        <ResponsiveWrapper flex={1} style={{ padding: 24 }} test>
-          <s.SpacerLarge />
-          <s.Container flex={1} jc={"center"} ai={"center"}>
-            <StyledLargeImg alt={"example"} src={"/config/images/birds.png"} />
-          </s.Container>
-          <s.SpacerLarge />
-          <s.Container
-            flex={2}
-            jc={"center"}
-            ai={"center"}
-            style={{
-              padding: 24,
-            }}
-          >
-          <s.TextDescription
-            style={{
-              color: "#D7F0D3",
-              fontFamily: "gazpacho,serif",
-              fontSize : "56px",
-              lineHeight: "56px",
-            }}
-          >
-            Missed out on the Moonbird mint on Ethereum?
-          </s.TextDescription>
-          <s.TextDescription
-            style={{
-              color: "var(--primary-text)",
-              fontSize : "18px",
-              lineHeight: "28px",
-              fontWeight: "500",
-            }}
-          >
-            Here's your opportunity to get your own Moonbird on Optimism. They're a collection of 10,000 PFPs that feature a richly diverse and unique pool of rarity-powered traits. Mint your Moonbird on Optimism now.
-          </s.TextDescription>
-          </s.Container>
-          <s.SpacerLarge />
-        </ResponsiveWrapper>
-        <s.SpacerMedium />
         <s.Container jc={"center"} ai={"center"} style={{ width: "70%" }}>
           <s.TextDescription
             style={{
